@@ -1,0 +1,18 @@
+CREATE TABLE Table_Users(
+	Users_Id INT PRIMARY KEY AUTO_INCREMENT,
+    users_username VARCHAR(100),
+    users_email VARCHAR(100),
+    users_password VARCHAR(100),
+    users_status BOOLEAN,
+    users_record_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE TABLE table_post(
+	Post_id INT PRIMARY KEY AUTO_INCREMENT,
+    Post_title VARCHAR(200),
+    Post_content TEXT,
+    Post_author_id INT,
+    Post_record_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    Post_modification_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    FOREIGN KEY FK_author_id (Post_author_id) REFERENCES table_users(Users_Id)
+);
